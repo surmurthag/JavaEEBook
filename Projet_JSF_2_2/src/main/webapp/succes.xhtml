@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>SUCCES</title>
+</head>
+<body>
+	#{sportMB.nouveauSport.nom}<br/>
+	<c:forEach items="#{sportMB.nouveauSport.terrainsCompatibles}" var="terrain">
+		#{terrain.code}<br/>
+	</c:forEach>
+	nombre de joueurs : #{sportMB.nouveauSport.nombreJoueurs}
+	<br/>
+	OK
+</body>
+</html>

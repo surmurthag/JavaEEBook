@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{facesContext.externalContext.requestLocale}"></f:view>
+<!-- <f:loadBundle basename="Messages" var="msgs"></f:loadBundle> -->
+<head>
+  <title><ui:insert name="title">#{msgs['template.titre.defaut']}</ui:insert></title>
+  <style><ui:insert name="style"></ui:insert></style>
+</head>
+	<body>
+	
+		<div id="header">
+		    <ui:insert name="header">
+		    	<ui:include src="/_header.xhtml"></ui:include>
+		    </ui:insert>
+		</div>
+		
+		<div id="content">
+		  <ui:insert name="content"></ui:insert>
+		</div>
+		
+		<div id="footer">
+		  <ui:insert name="footer">
+		  		<ui:include src="/_footer.xhtml"></ui:include>
+		  </ui:insert>
+		</div>
+	
+	</body>
+</html>

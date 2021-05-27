@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Réservez dès maintenant!</title>
+		<script type="text/javascript">
+		
+		
+        function GestionWebSocket()
+        {
+           if ("WebSocket" in window)
+           {
+        	  var ws = new WebSocket("ws://localhost:8080/Projet_WebSocket_1_1/acces");
+        	  
+        	  ws.onmessage = function (message) 
+              { 
+        		 document.getElementById("nombreVisiteur").innerText=message.data;
+              };
+              ws.onopen = function(event)
+              { 
+            	  ws.send("Bonjour le serveur");
+              };
+              ws.onclose = function()
+              { 
+                 alert("Connection fermée."); 
+              };    
+           }         
+           else
+           {
+              alert("Les WebSockets ne sont pas supportés pas votre navigateur.");
+           }
+        }
+		</script>
+		
+	</head>
+	<body onload="GestionWebSocket();">
+		<div id="nombreVisiteur"></div>
+	</body>
+</html>

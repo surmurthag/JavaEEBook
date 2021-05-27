@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- maxTotal: Nombre de connexions maximum vers la base de données présente dans le pool.
+		 -1 pour aucune limite -->
+
+    <!-- maxIdle: Nombre maximum de connexions inutilisée dans le pool.
+    	 -1 pour aucune limite -->
+
+    <!-- maxWaitMillis: Nombre de millisecondes maximum d'attente d'une connexion disponible avant la levée d'une exception.
+    	 -1 pour attendre indéfiniment -->
+
+    <!-- username and password: compte d'accès MySQL  -->
+
+    <!-- driverClassName: nom de la classe du pilote implémentant l'interface java.sql.Driver -->
+
+    <!-- url: la chaine de connexion -->
+
+  <Resource name="jdbc/pool_bdd_jdbc" 
+  			auth="Container" 
+  			type="javax.sql.DataSource"
+  			maxTotal="100" 
+  			maxIdle="30" 
+  			maxWaitMillis="10000"
+            username="utilisateur_eni" 
+            password="Pa$$w0rd" 
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost/bdd_jdbc?jdbcCompliantTruncation=false"/>
+
+</Context>
+

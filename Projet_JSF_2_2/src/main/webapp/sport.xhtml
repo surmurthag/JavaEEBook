@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:composition template="_template.xhtml">
+		<ui:define name="style">
+			label
+			{
+				display:inline-block;
+				width:150px;
+				text-align:right;
+				margin:5px;
+			}
+			.labelTop
+			{
+				vertical-align:top;
+			}
+			.zoneSaisie
+			{
+				width:150px;
+			}
+			input[type=submit]
+			{
+				margin-left:160px;
+			} 
+		
+		</ui:define>
+<!-- 		<ui:define name="title"> -->
+<!-- 			Ajout d'un sport -->
+<!-- 		</ui:define> -->
+		<ui:define name="content">
+		    <h:form>
+		    	<h:outputLabel for="nom" value="#{msgs['sport.label.nom']}"></h:outputLabel>
+				<h:inputText id="nom" maxlength="30" value="#{sportMB.nouveauSport.nom}" styleClass="zoneSaisie">
+<!-- 							 validatorMessage="Le nom est obligatoire"> -->
+<!-- 					<f:validateRequired></f:validateRequired> -->
+					<!-- UTILISATION D'UN VALIDATEUR SPECIFIQUE -->
+					<f:validator validatorId="ObligatoireValidator"></f:validator>
+				</h:inputText>
+				
+				<br/>
+				
+				<h:outputLabel for="terrains" styleClass="labelTop" value="#{msgs['sport.label.terrains']}"></h:outputLabel>
+				<h:selectManyListbox id="terrains" value="#{sportMB.nouveauSport.terrainsCompatibles}" styleClass="zoneSaisie" 
+									 converter="TerrainConverter"
+									 validatorMessage="#{msgs['sport.erreur.terrains']}">
+					<f:selectItems value="#{sportMB.terrains}" var="t" itemLabel="#{t.code}" itemValue="#{t}"></f:selectItems>
+					<!-- UTILISATION D'UN VALIDATEUR PREDEFINI -->
+					<f:validateRequired></f:validateRequired>
+				</h:selectManyListbox>
+				
+				<br/>
+				
+				<h:outputLabel for="nombreJoueurs" value="#{msgs['sport.label.nombreJoueurs']}"></h:outputLabel>
+				<h:inputText id="nombreJoueurs" value="#{sportMB.nouveauSport.nombreJoueurs}" styleClass="zoneSaisie">
+<!-- 							 validatorMessage="Le nombre de joueurs doit être compris entre 1 et 10"> -->
+<!--  					<f:validateLongRange minimum="1" maximum="10"></f:validateLongRange> -->
+						<!-- UTILISATION DE L'API BEAN VALIDATION -->
+				</h:inputText>
+				
+				<br/>
+				
+				<h:commandButton action="#{sportMB.ajouterLeSport}" value="#{msgs['sport.bouton.valider']}" styleClass="zoneSaisie"></h:commandButton>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>
